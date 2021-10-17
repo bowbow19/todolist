@@ -1,7 +1,7 @@
 const express = require('express')
-const mongoose = require('mongoose')
+const mongoose = require('mongoose') 
 const exphbs =require('express-handlebars')
-const Todo = require('./models/todo')
+const Todo = require('./models/todo') 
 const bodyParser = require('body-parser')
 
 const app = express()
@@ -79,6 +79,16 @@ app.post('/todos/:id/edit' , (req,res) =>{
     return todo.save()
   })
   .then(() => res.redirect(`/todos/${id}`))
+  .catch(error => console.log(error))
+})
+
+//刪除list資料
+
+app.post('/todos/:id/delete' , (req,res) =>{
+  const id = req.params.id
+  return Todo.findById(id)
+  .then(todo => todo.remove())
+  .then(() => res.redirect('/'))
   .catch(error => console.log(error))
 })
 
