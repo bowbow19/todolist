@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
     "mogoose": "0.0.1-security",
     "mongoose": "^6.0.11"
   },
